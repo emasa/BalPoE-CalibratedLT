@@ -11,7 +11,7 @@ Many real-world recognition problems are characterized by long-tailed label dist
 
 ## Citation
 ```
-@InProceedings{Sanchez2023BalPoE_CalibratedLT,
+@InProceedings{SanchezAimar2023BalPoE_CalibratedLT,
     author={Emanuel Sanchez Aimar and Arvi Jonnarth and Michael Felsberg and Marco Kuhlmann},
     title={Balanced Product of Calibrated Experts for Long-Tailed Recognition},
     booktitle = {Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)},

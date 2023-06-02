@@ -8,15 +8,24 @@ Many real-world recognition problems are characterized by long-tailed label dist
 ## Getting Started
 **Code release coming soon!**
 
-
 ## Citation
+If you find our work inspiring or use our codebase in your research, please cite our work.
 ```
 @InProceedings{SanchezAimar2023BalPoE_CalibratedLT,
-    author={Emanuel Sanchez Aimar and Arvi Jonnarth and Michael Felsberg and Marco Kuhlmann},
-    title={Balanced Product of Calibrated Experts for Long-Tailed Recognition},
+    author    = {Sanchez Aimar, Emanuel and Jonnarth, Arvi and Felsberg, Michael and Kuhlmann, Marco},
+    title     = {Balanced Product of Calibrated Experts for Long-Tailed Recognition},
     booktitle = {Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)},
     month     = {June},
     year      = {2023},
     pages     = {19967-19977}
 }
 ```
+
+## Acknowledgements
+
+Our codebase is based on several open-source projects, particularly: 
+- [SADE](https://github.com/Vanint/SADE-AgnosticLT) 
+- [RIDE](https://github.com/frank-xwang/RIDE-LongTailRecognition)
+- [BagOfTricksLT](https://github.com/zhangyongshun/BagofTricks-LT)
+
+This is a project based on this [pytorch template](https://github.com/victoresque/pytorch-template).

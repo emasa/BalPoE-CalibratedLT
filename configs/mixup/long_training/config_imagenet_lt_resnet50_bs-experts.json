@@ -1,0 +1,67 @@
+{
+    "name": "ImageNet_LT_ResNet50",
+    "n_gpu": 2,
+
+    "arch": {
+        "type": "ResNet50Model",
+        "args": {
+            "num_classes": 1000,
+            "reduce_dimension": false,
+            "use_norm": true,
+            "returns_feat": true,
+            "num_experts": 3
+        }
+    },
+    "data_loader": {
+        "type": "ImageNetLTDataLoader",
+        "args":{
+            "data_dir": "./data/imagenet",
+            "batch_size": 64,
+            "shuffle": true,
+            "num_workers": 12,
+            "randaugm": true
+        }
+    },
+    "optimizer": {
+        "type": "SGD",
+        "args":{
+            "lr": 0.025,
+            "weight_decay": 5e-4,
+            "momentum": 0.9,
+            "nesterov": true
+        }
+    },
+    "add_extra_info": true,
+    "loss": {
+        "type": "BSExpertLoss",
+        "tau_min": 0,
+        "tau_max": 2.5,
+        "args": {
+            "tau_list": [0, 1.25, 2.5]
+        }
+    },
+    "metrics": [
+        "accuracy"
+    ],
+    "lr_scheduler": {
+        "type": "CosineAnnealingLR",
+        "args": {
+            "T_max": 400,
+            "eta_min": 0.0
+        }
+    },
+    "trainer": {
+        "epochs": 400,
+        "save_dir": "saved/imagenet/bs_e400_tau1.25_bs128_lr0.025",
+        "save_period": 100,
+        "verbosity": 2,
+        "monitor": "max val_accuracy"
+    },
+    "combiner": {
+        "type": "Combiner",
+        "mode": "mixup",
+        "mixup": {
+            "alpha": 0.3
+        }
+    }
+}

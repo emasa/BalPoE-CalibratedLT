@@ -1,0 +1,70 @@
+{
+    "name": "Imbalance_CIFAR10LT_IR100",
+    "n_gpu": 1,
+
+    "arch": {
+        "type": "ResNet32Model",
+        "args": {
+            "num_classes": 10,
+            "reduce_dimension": false,
+            "use_norm": true,
+            "returns_feat": true,
+            "num_experts": 3
+        }
+    },
+    "data_loader": {
+        "type": "ImbalanceCIFAR10DataLoader",
+        "args":{
+            "data_dir": "./data/CIFAR-10",
+            "batch_size": 128,
+            "shuffle": true,
+            "num_workers": 4,
+            "imb_factor": 0.01,
+            "randaugm": true
+        }
+    },
+    "optimizer": {
+        "type": "SGD",
+        "args":{
+            "lr": 0.1,
+            "weight_decay": 5e-4,
+            "momentum": 0.9,
+            "nesterov": true
+        }
+    },
+    "add_extra_info": true,
+    "loss": {
+        "type": "BSExpertLoss",
+        "tau_min": 0,
+        "tau_max": 2.0,
+        "args": {
+            "tau_list": [0, 1.0, 2.0]
+        }
+    },
+    "metrics": [
+        "accuracy"
+    ],
+    "lr_scheduler": {
+        "type": "CustomLR",
+        "args": {
+            "step1": 320,
+            "step2": 360,
+            "gamma": 0.1,
+            "warmup_epoch": 10
+        }
+    },
+    "trainer": {
+        "epochs": 400,
+        "save_dir": "saved/cifar10/ir100/bs_e400_tau1.0_bs128_lr0.1",
+        "save_period": 100,
+        "verbosity": 2, 
+        "monitor": "max val_accuracy"
+    },
+    "combiner": {
+        "type": "Combiner",
+        "mode": "mixup",
+        "mixup": {
+            "alpha": 0.8
+        }
+    }
+}

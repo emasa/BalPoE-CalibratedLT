@@ -1,0 +1,68 @@
+{
+    "name": "iNaturalist_ResNet50",
+    "n_gpu": 4,
+
+    "arch": {
+        "type": "ResNet50Model",
+        "args": {
+            "num_classes": 8142,
+            "reduce_dimension": false,
+            "use_norm": true,
+            "returns_feat": true,
+            "num_experts": 3
+        }
+    },
+    "data_loader": {
+        "type": "iNaturalistDataLoader",
+        "args":{
+            "data_dir": "./data/iNaturalist",
+            "batch_size": 512,
+            "shuffle": true,
+            "num_workers": 16,
+            "randaugm": true
+        }
+    },
+    "optimizer": {
+        "type": "SGD",
+        "args":{
+            "lr": 0.2,
+            "weight_decay": 2e-4,
+            "momentum": 0.9,
+            "nesterov": true
+        }
+    },
+    "add_extra_info": true,
+    "loss": {
+        "type": "BSExpertLoss",
+        "tau_min": -1.0,
+        "tau_max": 3.0,
+        "args": {
+            "tau_list": [-1.0, 1.0, 3.0]
+        }
+    },
+    "metrics": [
+        "accuracy"
+    ],
+    "lr_scheduler": {
+        "type": "CosineAnnealingLR",
+        "args": {
+            "T_max": 400,
+            "eta_min": 0.0
+        }
+    },
+    "trainer": {
+        "epochs": 400,
+        "save_dir": "saved/inaturalist/bs_e400_tau1_bs512_lr0.2",
+        "save_period": 100,
+        "verbosity": 2,
+        "monitor": "max val_accuracy"
+    },
+    "combiner": {
+        "type": "Combiner",
+        "mode": "mixup",
+        "mixup": {
+            "alpha": 0.2
+        }
+    }
+}
+

@@ -5,6 +5,10 @@ This repository contains the official Pytorch implementation of [Balanced Produc
 
 🎬[Video](https://www.youtube.com/watch?v=H664_EQq2cs) | 💻[Slides](assets/CVPR2023-short-presentation.pdf) | 🔥[Poster](assets/BalPoE-CalibratedLT-poster.pdf) | [ArXiv preprint](https://arxiv.org/abs/2206.05260) 
 
+## Notes
+
+- **[2025/03/12]** 🔥 Check out **ADELLO-LTSSL**, a flexible logit-adjustment framework for semi-supervised long-tailed recognition delivering robust calibration and SOTA performance—see our [ECCV 2024 paper](https://arxiv.org/abs/2306.04621) and [Github repo](https://github.com/emasa/ADELLO-LTSSL). 
+ 
 ## Method
 
 <p align="center"> <img src='assets/balpoe_calibrated_framework.png' align="center"> </p>

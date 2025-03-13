@@ -185,6 +185,27 @@ If you find our work inspiring or use our codebase in your research, please cite
     year      = {2023},
     pages     = {19967-19977}
 }
+
+@InProceedings{SanchezAimar2024ADELLO_LTSSL,
+    author="Sanchez Aimar, Emanuel
+    and Helgesen, Nathaniel
+    and Xu, Yonghao
+    and Kuhlmann, Marco
+    and Felsberg, Michael",
+    title="Flexible Distribution Alignment: Towards Long-Tailed Semi-supervised Learning with Proper Calibration",
+    booktitle="Computer Vision -- ECCV 2024",
+    year="2025",
+    editor="Leonardis, Ale{\v{s}}
+    and Ricci, Elisa
+    and Roth, Stefan
+    and Russakovsky, Olga
+    and Sattler, Torsten
+    and Varol, G{\"u}l",
+    publisher="Springer Nature Switzerland",
+    address="Cham",
+    pages="307--327",
+    isbn="978-3-031-72949-2"
+}
 ```
 
 ## Acknowledgements
